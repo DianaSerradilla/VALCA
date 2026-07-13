@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALCA - Conocé todos los usos de nuestros productos</title>
+  <meta name="description" content="Descubre todos los usos y beneficios de los productos de cosmética natural VALCA. Cera regeneradora, ultra regeneradora, pocket y más.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+    <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <!-- Fondo difuminado para pantallas de escritorio -->
+  <div class="desktop-bg-blur" style="background-image: url('images/Menu_inicio-Fondo.png');"></div>
+
+  <!-- Contenedor principal estilo celular (Relación de aspecto 9:16) -->
+  <div class="phone-wrapper">
+    <div class="menu-container">
+      
+      <!-- Contenedor del Logo de la marca -->
+      <div class="logo-container">
+        <img src="images/VALCA-Negro.png" alt="VALCA Logo" class="brand-logo">
+      </div>
+      
+      <!-- Párrafo / Mensaje de marca -->
+      <p class="menu-subtitle">Conocé todos los usos de nuestros productos</p>
+
+      <!-- Lista de botones en flujo natural -->
+      <div class="buttons-list">
+        <a href="pages/regeneradora.html" class="menu-btn btn-regeneradora" id="btn-regeneradora">
+          Regeneradora
+        </a>
+        <a href="pages/ultra.html" class="menu-btn btn-ultra" id="btn-ultra">
+          Ultra Regeneradora
+        </a>
+        <button class="menu-btn btn-pocket" id="btn-pocket" data-name="Pocket">
+          Pocket
+        </button>
+        <a href="pages/estrias.html" class="menu-btn btn-estrias" id="btn-estrias">
+          Estrías
+        </a>
+        <a href="pages/intima.html" class="menu-btn btn-intima" id="btn-intima">
+          Íntima
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Notificación Toast premium y moderna -->
+    <div class="toast-container" id="toast">
+      <div class="toast-icon" id="toast-icon" style="background-color: var(--color-teal);"></div>
+      <span id="toast-text">Próximamente disponible</span>
+    </div>
+  </div>
+
+  <script>
+    // Elementos del DOM
+    const toast = document.getElementById('toast');
+    const toastText = document.getElementById('toast-text');
+    const toastIcon = document.getElementById('toast-icon');
+    const buttons = document.querySelectorAll('button.menu-btn');
+    
+    let toastTimeout;
+
+    // Mapeo de colores de botones para el punto indicador del toast
+    const colors = {
+      'Ultra Regeneradora': 'var(--color-dark-teal)',
+      'Pocket': 'var(--color-green)',
+      'Estrías': 'var(--color-lavender)',
+      'Íntima': 'var(--color-pink)'
+    };
+
+    // Muestra el toast premium personalizado
+    function showToast(name) {
+      // Limpia el temporizador anterior si existe
+      clearTimeout(toastTimeout);
+      
+      // Actualiza los contenidos
+      toastText.textContent = `${name} próximamente disponible`;
+      toastIcon.style.backgroundColor = colors[name] || 'var(--color-teal)';
+      
+      // Transición de entrada
+      toast.classList.add('show');
+      
+      // Transición de salida
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Asigna los eventos de clic
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        showToast(name);
+      });
+    });
+  </script>
+
+</body>
+</html>

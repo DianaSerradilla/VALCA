@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALCA - Regeneradora (Stories)</title>
+  <meta name="description" content="Descubre todos los usos de la cera Regeneradora de VALCA.">
+  <link rel="stylesheet" href="../index.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon_io/favicon-16x16.png">
+  <link rel="shortcut icon" href="../images/favicon_io/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <!-- Fondo difuminado para pantallas de escritorio (Se actualiza dinámicamente mediante JS) -->
+  <div class="desktop-bg-blur" id="desktop-blur"></div>
+
+  <!-- Contenedor principal estilo celular (Relación de aspecto 9:16) -->
+  <div class="phone-wrapper" id="story-wrapper">
+
+    <!-- Flechas de navegación para escritorio (posicionadas fuera del marco en pantallas grandes) -->
+    <button class="desktop-nav-btn desktop-nav-btn-prev" id="desktop-prev" aria-label="Anterior">&#10094;</button>
+    <button class="desktop-nav-btn desktop-nav-btn-next" id="desktop-next" aria-label="Siguiente">&#10095;</button>
+
+    <div class="stories-container">
+      
+      <!-- Capa superior: Barras de progreso y encabezado del perfil -->
+      <div class="story-header-overlay">
+        <!-- Contenedor de las barras de progreso -->
+        <div class="progress-container" id="progress-container">
+          <!-- Aquí se generarán dinámicamente los segmentos -->
+        </div>
+
+        <!-- Información del perfil / Encabezado -->
+        <div class="story-user-info">
+          <div class="user-profile">
+            <div class="profile-pic" style="background:black;">
+              <img src="../images/iso_blanco.png" alt="VALCA">
+            </div>
+            <span class="username">laboratoriosvalca</span>
+            <span class="time-ago">2 h</span>
+          </div>
+          <div class="header-controls">
+            <!-- Botón de cerrar (X) para volver a index.html -->
+            <a href="../index.html" class="header-btn close-btn" aria-label="Cerrar" style="text-decoration: none;">&times;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zonas táctiles de navegación -->
+      <div class="tap-zones">
+        <div class="tap-zone-left" id="tap-left"></div>
+        <div class="tap-zone-right" id="tap-right"></div>
+      </div>
+
+      <!-- Carril de las diapositivas de las historias -->
+      <div class="story-track" id="story-track">
+        <!-- Diapositiva 1 -->
+        <div class="story-slide active" data-index="0" data-src="../images/Regeneradora/Rege_00.png">
+          <img src="../images/Regeneradora/Rege_00.png" alt="VALCA Regeneradora - Inicio">
+        </div>
+        <!-- Diapositiva 2 -->
+        <div class="story-slide" data-index="1" data-src="../images/Regeneradora/Rege_01.png">
+          <img src="../images/Regeneradora/Rege_01.png" alt="VALCA Regeneradora - Usos y Beneficios">
+        </div>
+        <!-- Diapositiva 3 -->
+        <div class="story-slide" data-index="2" data-src="../images/Regeneradora/Rege_02.png">
+          <img src="../images/Regeneradora/Rege_02.png" alt="VALCA Regeneradora - Detalle">
+        </div>
+        <!-- Diapositiva 4 -->
+        <div class="story-slide" data-index="3" data-src="../images/Regeneradora/Rege_03.png">
+          <img src="../images/Regeneradora/Rege_03.png" alt="VALCA Regeneradora - Aplicación">
+        </div>
+        <!-- Diapositiva 5 -->
+        <div class="story-slide" data-index="4" data-src="../images/Regeneradora/Rege_04.png">
+          <img src="../images/Regeneradora/Rege_04.png" alt="VALCA Regeneradora - Cuidado de la piel">
+        </div>
+        <!-- Diapositiva 6 -->
+        <div class="story-slide" data-index="5" data-src="../images/Regeneradora/Rege_05.png">
+          <img src="../images/Regeneradora/Rege_05.png" alt="VALCA Regeneradora - Humectación">
+        </div>
+        <!-- Diapositiva 7 -->
+        <div class="story-slide" data-index="6" data-src="../images/Regeneradora/Rege_06.png">
+          <img src="../images/Regeneradora/Rege_06.png" alt="VALCA Regeneradora - Nutrición">
+        </div>
+        <!-- Diapositiva 8 -->
+        <div class="story-slide" data-index="7" data-src="../images/Regeneradora/Rege_07.png">
+          <img src="../images/Regeneradora/Rege_07.png" alt="VALCA Regeneradora - Alivio">
+        </div>
+        <!-- Diapositiva 9 -->
+        <div class="story-slide" data-index="8" data-src="../images/Regeneradora/Rege_08.png">
+          <img src="../images/Regeneradora/Rege_08.png" alt="VALCA Regeneradora - Reparación">
+        </div>
+        <!-- Diapositiva 10 -->
+        <div class="story-slide" data-index="9" data-src="../images/Regeneradora/Rege_09.png">
+          <img src="../images/Regeneradora/Rege_09.png" alt="VALCA Regeneradora - Protección">
+        </div>
+        <!-- Diapositiva 11 -->
+        <div class="story-slide" data-index="10" data-src="../images/Regeneradora/Rege_10.png">
+          <img src="../images/Regeneradora/Rege_10.png" alt="VALCA Regeneradora - Suavidad">
+        </div>
+        <!-- Diapositiva 12 -->
+        <div class="story-slide" data-index="11" data-src="../images/Regeneradora/Rege_11.png">
+          <img src="../images/Regeneradora/Rege_11.png" alt="VALCA Regeneradora - Resultados">
+        </div>
+        <!-- Diapositiva 13 -->
+        <div class="story-slide" data-index="12" data-src="../images/Regeneradora/Rege_12.png">
+          <img src="../images/Regeneradora/Rege_12.png" alt="VALCA Regeneradora - Fin">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Configuración
+    const STORY_DURATION = 5000; // 5 segundos por diapositiva de historia
+    const slides = document.querySelectorAll('.story-slide');
+    const totalStories = slides.length;
+    
+    // Elementos del DOM
+    const desktopBlur = document.getElementById('desktop-blur');
+    const progressContainer = document.getElementById('progress-container');
+    const tapLeft = document.getElementById('tap-left');
+    const tapRight = document.getElementById('tap-right');
+    const btnPrev = document.getElementById('desktop-prev');
+    const btnNext = document.getElementById('desktop-next');
+    const storyWrapper = document.getElementById('story-wrapper');
+
+    // Estado de navegación y tiempos
+    let currentIndex = 0;
+    let startTime = null;
+    let elapsedBeforePause = 0;
+    let animationFrameId = null;
+    let isPaused = false;
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let pressStartTime = 0;
+
+    // Construye los segmentos de la barra de progreso dinámicamente
+    function setupProgressBars() {
+      progressContainer.innerHTML = '';
+      for (let i = 0; i < totalStories; i++) {
+        const bg = document.createElement('div');
+        bg.classList.add('progress-bar-bg');
+        
+        const fill = document.createElement('div');
+        fill.classList.add('progress-bar-fill');
+        fill.setAttribute('id', `fill-${i}`);
+        
+        bg.appendChild(fill);
+        progressContainer.appendChild(bg);
+      }
+    }
+
+    // Actualiza el diseño de las barras de progreso (llena las anteriores, vacía las siguientes)
+    function updateProgressBarsUI() {
+      for (let i = 0; i < totalStories; i++) {
+        const fill = document.getElementById(`fill-${i}`);
+        if (i < currentIndex) {
+          fill.style.width = '100%';
+        } else if (i > currentIndex) {
+          fill.style.width = '0%';
+        }
+      }
+    }
+
+    // Bucle central de animación (requestAnimationFrame)
+    function tick(timestamp) {
+      if (!startTime) {
+        startTime = timestamp;
+      }
+
+      if (!isPaused) {
+        const elapsed = timestamp - startTime + elapsedBeforePause;
+        const progress = Math.min((elapsed / STORY_DURATION) * 100, 100);
+        
+        const currentFill = document.getElementById(`fill-${currentIndex}`);
+        if (currentFill) {
+          currentFill.style.width = `${progress}%`;
+        }
+
+        if (elapsed >= STORY_DURATION) {
+          nextStory();
+          return;
+        }
+      } else {
+        // Mantiene la línea de tiempo base alineada durante la pausa para evitar saltos al reanudar
+        startTime = timestamp;
+      }
+
+      animationFrameId = requestAnimationFrame(tick);
+    }
+
+    // Cambia la diapositiva actual y activa las animaciones
+    function changeStory(newIndex, direction = 'next') {
+      if (newIndex < 0 || newIndex >= totalStories) return;
+
+      // Cancela la animación activa
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+
+      // Clases de efectos de transición
+      const currentSlide = slides[currentIndex];
+      const nextSlide = slides[newIndex];
+
+      // Remueve las clases de animación anteriores
+      slides.forEach(slide => {
+        slide.classList.remove('active', 'exit-left', 'exit-right', 'enter-left', 'enter-right');
+      });
+
+      // Posiciona la siguiente diapositiva lista para entrar
+      if (direction === 'next') {
+        currentSlide.classList.add('exit-left');
+        nextSlide.classList.add('enter-right');
+      } else {
+        currentSlide.classList.add('exit-right');
+        nextSlide.classList.add('enter-left');
+      }
+
+      // Fuerza el redibujado de la página (reflow)
+      nextSlide.offsetHeight;
+
+      // Activa la siguiente diapositiva
+      nextSlide.classList.add('active');
+      
+      // Actualiza el estado
+      currentIndex = newIndex;
+      
+      // Actualiza el fondo difuminado y las barras de progreso
+      const activeSrc = nextSlide.getAttribute('data-src');
+      desktopBlur.style.backgroundImage = `url('${activeSrc}')`;
+      
+      updateProgressBarsUI();
+
+      // Restablece las variables de tiempo de la animación
+      startTime = null;
+      elapsedBeforePause = 0;
+      isPaused = false;
+
+      // Inicia el bucle de actualización
+      animationFrameId = requestAnimationFrame(tick);
+    }
+
+    // Ir a la siguiente historia
+    function nextStory() {
+      if (currentIndex < totalStories - 1) {
+        changeStory(currentIndex + 1, 'next');
+      } else {
+        // Redirige de vuelta a index.html cuando terminan las historias
+        window.location.href = '../index.html';
+      }
+    }
+
+    // Ir a la historia anterior
+    function prevStory() {
+      if (currentIndex > 0) {
+        changeStory(currentIndex - 1, 'prev');
+      } else {
+        // Reinicia la historia actual al 0% si es la primera diapositiva y se hace clic a la izquierda
+        changeStory(0, 'prev');
+      }
+    }
+
+    // Controlador de pausa
+    function pauseStory() {
+      if (isPaused) return;
+      isPaused = true;
+      if (startTime) {
+        elapsedBeforePause += (performance.now() - startTime);
+      }
+      startTime = null;
+    }
+
+    // Controlador de reanudación
+    function resumeStory() {
+      if (!isPaused) return;
+      isPaused = false;
+      startTime = performance.now();
+    }
+
+    // Desencadenadores de interacción y navegación
+    
+    // Clics y mantener presionado en escritorio
+    // Controlador de inicio de presión (PointerDown)
+    function handlePointerStart(e) {
+      if (e.target.closest('.close-btn')) return;
+      pointerStartX = e.clientX;
+      pointerStartY = e.clientY;
+      pressStartTime = performance.now();
+      pauseStory();
+    }
+
+    // Controlador de fin de presión (PointerUp)
+    function handlePointerEnd(e, clickZone) {
+      if (e.target.closest('.close-btn')) return;
+      resumeStory();
+
+      const diffX = e.clientX - pointerStartX;
+      const diffY = e.clientY - pointerStartY;
+      const pressDuration = performance.now() - pressStartTime;
+
+      // Gesto de deslizamiento (al menos 50px de movimiento horizontal)
+      if (Math.abs(diffX) > 50 && Math.abs(diffY) < 100) {
+        if (diffX < 0) {
+          nextStory();
+        } else {
+          prevStory();
+        }
+      } else {
+        // Tap rápido (menos de 250ms de pulsación)
+        if (pressDuration < 250) {
+          if (clickZone === 'left') {
+            prevStory();
+          } else if (clickZone === 'right') {
+            nextStory();
+          }
+        }
+      }
+    }
+
+    // Configuración de las zonas táctiles (Soporte unificado Mouse y Touch mediante PointerEvents)
+    tapLeft.addEventListener('pointerdown', handlePointerStart);
+    tapLeft.addEventListener('pointerup', (e) => handlePointerEnd(e, 'left'));
+    tapLeft.addEventListener('pointerleave', resumeStory);
+
+    tapRight.addEventListener('pointerdown', handlePointerStart);
+    tapRight.addEventListener('pointerup', (e) => handlePointerEnd(e, 'right'));
+    tapRight.addEventListener('pointerleave', resumeStory);
+
+    // Botones de flechas para escritorio
+    btnPrev.addEventListener('click', prevStory);
+    btnNext.addEventListener('click', nextStory);
+
+    // Soporte de teclado (Flechas y Espacio)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevStory();
+      } else if (e.key === 'ArrowRight') {
+        nextStory();
+      } else if (e.key === ' ') {
+        e.preventDefault(); // Evita el desplazamiento de pantalla
+        if (isPaused) {
+          resumeStory();
+        } else {
+          pauseStory();
+        }
+      }
+    });
+
+    // Inicializa la página
+    setupProgressBars();
+    
+    // Establece el desenfoque de imagen de fondo inicial
+    const initialSrc = slides[0].getAttribute('data-src');
+    desktopBlur.style.backgroundImage = `url('${initialSrc}')`;
+
+    // Inicia la reproducción
+    animationFrameId = requestAnimationFrame(tick);
+
+  </script>
+
+</body>
+</html>

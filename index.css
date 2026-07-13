@@ -1,0 +1,541 @@
+/* Importación de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'OskariG2-Book';
+  src: url('tipografia/OskariG2-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-family: 'Montserrat', sans-serif;
+  
+  /* Colores de marca */
+  --color-teal: #0693a8;
+  --color-dark-teal: #1d5662;
+  --color-green: #9ab761;
+  --color-lavender: #b99ed4;
+  --color-pink: #e074bb;
+  
+  --color-bg-desktop: #0f141c;
+  --color-card-border: rgba(255, 255, 255, 0.1);
+  --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-desktop);
+  color: #ffffff;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Elemento de desenfoque de fondo para escritorio */
+.desktop-bg-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) brightness(0.3);
+  z-index: 1;
+  transform: scale(1.1); /* Evita los bordes blancos causados por el filtro de desenfoque */
+  transition: background-image 0.6s ease-in-out;
+}
+
+/* Contenedor principal de relación de aspecto (9:16) */
+.phone-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px; /* Ancho similar al iPhone 14 Pro Max en escritorio */
+  height: 100vh;
+  max-height: 900px;
+  background-color: #000;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-premium);
+  transition: all 0.3s ease;
+}
+
+/* En escritorio: Muestra esquinas redondeadas y borde. En móvil: Pantalla completa */
+@media (min-width: 480px) {
+  .phone-wrapper {
+    border-radius: 40px;
+    border: 8px solid #222b35;
+    max-height: 85vh;
+  }
+}
+
+@media (max-width: 479px) {
+  .phone-wrapper {
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+  .desktop-bg-blur {
+    display: none !important;
+  }
+}
+
+/* Diseños del panel de botones / menú de inicio */
+.menu-container {
+  width: 100%;
+  height: 100%;
+  background: url('images/inicio-textura.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  gap: 15px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Contenedor del Logo de la marca */
+.logo-container {
+  width: 180px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.brand-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Subtítulo / Párrafo con tipografía premium y sombra */
+.menu-subtitle {
+  font-family: 'OskariG2-Book', sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #A2A2A2;
+  text-align: center;
+  line-height: 1.1;
+  max-width: 280px;
+  margin-bottom: 25px;
+  letter-spacing: -0.01em;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Lista contenedora de botones */
+.buttons-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Diseño base de los botones en flujo natural */
+.menu-btn {
+  width: 250px;
+  height: 48px;
+  border-radius: 9999px;
+  border: none;
+  color: #ffffff;
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              filter 0.2s ease, 
+              box-shadow 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.menu-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.menu-btn:active {
+  transform: scale(0.97);
+  filter: brightness(0.9);
+}
+
+/* Colores específicos de cada botón */
+.btn-regeneradora {
+  background-color: var(--color-teal);
+}
+
+.btn-ultra {
+  background-color: var(--color-dark-teal);
+}
+
+.btn-pocket {
+  background-color: var(--color-green);
+}
+
+.btn-estrias {
+  background-color: var(--color-lavender);
+}
+
+.btn-intima {
+  background-color: var(--color-pink);
+}
+
+/* Animaciones Premium */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos del componente de historias (Stories) */
+.stories-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Carril contenedor de las imágenes de historias */
+.story-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor de diapositiva de historia individual */
+.story-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.story-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Recorte de la barra de progreso estática pre-renderizada:
+   Las imágenes de la 4 a la 9 ya vienen con una barra de progreso estática arriba.
+   Para ocultarla, recortamos el 5% superior de las imágenes, escalándolas
+   ligeramente para que sigan llenando el contenedor perfectamente.
+*/
+.story-slide img {
+  width: 100%;
+  height: 105%; /* Hace la imagen más alta */
+  margin-top: -5%; /* Desplaza la imagen hacia arriba para recortar la barra estática superior */
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Zonas táctiles de navegación */
+.tap-zones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  touch-action: none;
+}
+
+.tap-zone-left {
+  width: 30%;
+  height: 100%;
+  cursor: w-resize;
+}
+
+.tap-zone-right {
+  width: 70%;
+  height: 100%;
+  cursor: e-resize;
+}
+
+/* Capa superior de estilo Instagram (gradiente oscuro) */
+.story-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 16px 24px 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+/* Contenedor de la barra de progreso */
+.progress-container {
+  display: flex;
+  width: 100%;
+  gap: 4px;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #ffffff;
+  border-radius: 999px;
+  transition: width 0.1s linear; /* Pasos rápidos para una animación fluida */
+}
+
+/* Información de perfil en el encabezado */
+.story-user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1.5px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-weight: 700;
+  color: var(--color-teal);
+  font-size: 0.75rem;
+}
+
+.profile-pic img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.username {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.time-ago {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s;
+  padding: 4px;
+}
+
+.header-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.close-btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* Botones de flechas para escritorio */
+.desktop-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 15;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.25s, opacity 0.25s, transform 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.phone-wrapper:hover .desktop-nav-btn {
+  @media (min-width: 768px) {
+    opacity: 0.85;
+    pointer-events: auto;
+  }
+}
+
+.desktop-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.desktop-nav-btn-prev {
+  left: -60px;
+}
+
+.desktop-nav-btn-next {
+  right: -60px;
+}
+
+@media (max-width: 580px) {
+  /* Oculta los botones de escritorio si el marco ocupa casi todo el ancho de pantalla */
+  .desktop-nav-btn {
+    display: none !important;
+  }
+}
+
+/* Notificación Toast Premium */
+.toast-container {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: rgba(15, 20, 28, 0.95);
+  border: 1px solid var(--color-card-border);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  width: 80%;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              opacity 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.toast-container.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Efectos de transición de historias - Deslizamiento estilo Instagram (baraja de cartas) */
+.story-slide.exit-left {
+  opacity: 0;
+  transform: translateX(-20%) scale(0.94);
+  z-index: 1;
+}
+
+.story-slide.enter-right {
+  opacity: 1; /* Mantiene la diapositiva visible mientras se desliza hacia adentro */
+  transform: translateX(100%);
+  z-index: 3;
+}
+
+.story-slide.exit-right {
+  opacity: 1; /* Mantiene la diapositiva visible mientras se desliza hacia afuera */
+  transform: translateX(100%);
+  z-index: 3;
+}
+
+.story-slide.enter-left {
+  opacity: 0;
+  transform: translateX(-20%) scale(0.94);
+  z-index: 1;
+}
+
+.story-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  transform: translateX(0) scale(1);
+}
