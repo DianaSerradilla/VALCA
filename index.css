@@ -17,6 +17,7 @@
   --color-green: #9ab761;
   --color-lavender: #b99ed4;
   --color-pink: #e074bb;
+  --color-orange: #e57d20;
   
   --color-bg-desktop: #0f141c;
   --color-card-border: rgba(255, 255, 255, 0.1);
@@ -207,6 +208,10 @@ html, body {
 
 .btn-intima {
   background-color: var(--color-pink);
+}
+
+.btn-capilar {
+  background-color: var(--color-orange);
 }
 
 /* Animaciones Premium */
