@@ -476,7 +476,7 @@ html, body {
 /* Notificación Toast Premium */
 .toast-container {
   position: absolute;
-  bottom: calc(12dvh + env(safe-area-inset-bottom, 0px));
+  bottom: calc(10dvh + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%) translateY(25dvh);
   background-color: rgba(15, 20, 28, 0.95);
