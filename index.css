@@ -33,7 +33,7 @@ html, body {
   font-family: var(--font-family);
   background-color: var(--color-bg-desktop);
   color: #ffffff;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@ html, body {
   position: relative;
   width: 100%;
   max-width: 450px; /* Ancho similar al iPhone 14 Pro Max en escritorio */
-  height: 100vh;
+  height: 100dvh;
   max-height: 900px;
   background-color: #000;
   z-index: 2;
@@ -78,7 +78,8 @@ html, body {
   .phone-wrapper {
     border-radius: 40px;
     border: 8px solid #222b35;
-    max-height: 85vh;
+    max-height: 85dvh;
+    transform: translateY(-3dvh); /* Mueve el contenedor un poco hacia arriba */
   }
 }
 
@@ -474,9 +475,9 @@ html, body {
 /* Notificación Toast Premium */
 .toast-container {
   position: absolute;
-  bottom: 30px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   left: 50%;
-  transform: translateX(-50%) translateY(100px);
+  transform: translateX(-50%) translateY(120px);
   background-color: rgba(15, 20, 28, 0.95);
   border: 1px solid var(--color-card-border);
   color: #ffffff;
