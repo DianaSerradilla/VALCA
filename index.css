@@ -106,20 +106,28 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: calc(65px + env(safe-area-inset-top, 0px)) 24px 40px 24px;
-  gap: 15px;
-  overflow: hidden;
+  padding: calc(35px + env(safe-area-inset-top, 0px)) 20px 25px 20px;
+  gap: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.menu-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 /* Contenedor del Logo de la marca */
 .logo-container {
-  width: 180px;
-  margin-bottom: 15px;
+  width: 150px;
+  margin-bottom: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
   animation: fadeInDown 0.8s ease-out;
+  flex-shrink: 0;
 }
 
 .brand-logo {
@@ -131,87 +139,67 @@ html, body {
 /* Subtítulo / Párrafo con tipografía premium y sombra */
 .menu-subtitle {
   font-family: 'OskariG2-Book', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: normal;
   color: #A2A2A2;
   text-align: center;
-  line-height: 1.1;
-  max-width: 280px;
-  margin-bottom: 25px;
+  line-height: 1.15;
+  max-width: 260px;
+  margin-bottom: 8px;
   letter-spacing: -0.01em;
   animation: fadeInUp 0.8s ease-out;
+  flex-shrink: 0;
 }
 
-/* Lista contenedora de botones */
-.buttons-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Cuadrícula contenedora de tarjetas del menú */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   width: 100%;
-  gap: 15px;
-  margin-top: 35px; /* Desplaza la lista de botones un poco más abajo */
+  max-width: 390px;
+  margin-top: 25px;
   animation: fadeInUp 1s ease-out;
+  padding: 2px;
 }
 
-/* Diseño base de los botones en flujo natural */
-.menu-btn {
-  width: 250px;
-  height: 48px;
-  border-radius: 9999px;
-  border: none;
-  color: #ffffff;
-  font-family: var(--font-family);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+/* Estilos de cada tarjeta de menú */
+.menu-card {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.06);
+  transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.28s ease, 
+              filter 0.2s ease;
   text-decoration: none;
-  text-align: center;
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-              filter 0.2s ease, 
-              box-shadow 0.25s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
+  background-color: transparent;
+  transform: translateZ(0);
 }
 
-.menu-btn:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+.menu-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
 }
 
-.menu-btn:active {
-  transform: scale(0.97);
-  filter: brightness(0.9);
+.menu-card:hover {
+  transform: translateY(-3px) scale(1.025);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.02);
 }
 
-/* Colores específicos de cada botón */
-.btn-regeneradora {
-  background-color: var(--color-teal);
+.menu-card:hover .menu-card-img {
+  transform: scale(1.02);
 }
 
-.btn-ultra {
-  background-color: var(--color-dark-teal);
-}
-
-.btn-pocket {
-  background-color: var(--color-green);
-}
-
-.btn-estrias {
-  background-color: var(--color-lavender);
-}
-
-.btn-intima {
-  background-color: var(--color-pink);
-}
-
-.btn-capilar {
-  background-color: var(--color-orange);
+.menu-card:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Animaciones Premium */
