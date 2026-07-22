@@ -37,7 +37,7 @@
             <div class="profile-pic" style="background:black;">
               <img src="../images/iso_blanco.png" alt="VALCA">
             </div>
-            <span class="username">laboratoriosvalca</span>
+            <a href="https://valca.com.ar" target="_blank" style="text-decoration: none;"><span class="username">laboratoriosvalca</span></a>
             <span class="time-ago">2 h</span>
           </div>
           <div class="header-controls">
@@ -90,6 +90,10 @@
         <!-- Diapositiva 9 -->
         <div class="story-slide" data-index="8" data-src="../images/Capilar/Capilar_08.png">
           <img src="../images/Capilar/Capilar_08.png" alt="VALCA Capilar - Fin">
+          <div class="story-slide-overlay">
+            <p class="story-coming-soon">Muy pronto en</p>
+            <a href="https://valca.com.ar" target="_blank" class="story-cta-btn">valca.com.ar</a>
+          </div>
         </div>
       </div>
 
@@ -269,7 +273,7 @@
     // Clics y mantener presionado en escritorio
     // Controlador de inicio de presión (PointerDown)
     function handlePointerStart(e) {
-      if (e.target.closest('.close-btn')) return;
+      if (e.target.closest('.close-btn') || e.target.closest('.story-cta-btn')) return;
       pointerStartX = e.clientX;
       pointerStartY = e.clientY;
       pressStartTime = performance.now();
@@ -278,7 +282,7 @@
 
     // Controlador de fin de presión (PointerUp)
     function handlePointerEnd(e, clickZone) {
-      if (e.target.closest('.close-btn')) return;
+      if (e.target.closest('.close-btn') || e.target.closest('.story-cta-btn')) return;
       resumeStory();
 
       const diffX = e.clientX - pointerStartX;
