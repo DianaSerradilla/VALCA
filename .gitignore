@@ -1,0 +1,23 @@
+# Herramientas de IA (configuración y registros locales)
+.claude/
+.atl/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Dependencias, logs y entornos locales
+node_modules/
+*.log
+.env
+.env.*
+
+# Archivos temporales
+*.tmp
+*.bak

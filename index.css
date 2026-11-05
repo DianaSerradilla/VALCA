@@ -8,6 +8,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'OskariG2-SemiBold';
+  src: url('tipografia/OskariG2-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 :root {
   --font-family: 'Montserrat', sans-serif;
   
@@ -100,14 +107,17 @@ html, body {
 .menu-container {
   width: 100%;
   height: 100%;
-  background: url('images/inicio-textura.jpg') no-repeat center center;
-  background-size: cover;
+  background: #fafafa;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: calc(35px + env(safe-area-inset-top, 0px)) 20px 25px 20px;
-  gap: 10px;
+  padding: 0 0 env(safe-area-inset-bottom, 0px) 0;
+  gap: 0;
+  /* Diseño sobre un "artboard" 9:16 de 1080 px: todo se mide en --k (1 px de diseño).
+     El artboard se ajusta al ancho o al alto disponible (el que limite) y el bloque
+     queda centrado en vertical, así se ve igual de armado en cualquier dispositivo. */
+  container-type: size;
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -119,10 +129,23 @@ html, body {
   display: none; /* Chrome, Safari, Opera */
 }
 
+.menu-container > *,
+.menu-container::after {
+  --k: calc(min(100cqw, 56.25cqh) / 1080);
+}
+
+/* Espaciador inferior: sube un poco el bloque (el PNG del logo trae aire arriba) */
+.menu-container::after {
+  content: '';
+  flex: 0 0 calc(160 * var(--k));
+}
+
 /* Contenedor del Logo de la marca */
 .logo-container {
-  width: 150px;
-  margin-bottom: 2px;
+  /* el PNG trae aire alrededor: el texto ocupa ~84% de este ancho */
+  width: calc(813 * var(--k));
+  margin-top: auto; /* centra el bloque en vertical */
+  margin-bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,14 +162,15 @@ html, body {
 /* Subtítulo / Párrafo con tipografía premium y sombra */
 .menu-subtitle {
   font-family: 'OskariG2-Book', sans-serif;
-  font-size: 1.3rem;
+  /* Diseño: texto de ~360 px de ancho */
+  font-size: calc(52 * var(--k));
+  margin-top: calc(-11 * var(--k)); /* pegado al logo, que trae aire abajo */
   font-weight: normal;
-  color: #A2A2A2;
+  color: #000;
   text-align: center;
   line-height: 1.15;
-  max-width: 260px;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  margin-bottom: 0;
+  letter-spacing: 0.01em;
   animation: fadeInUp 0.8s ease-out;
   flex-shrink: 0;
 }
@@ -155,24 +179,20 @@ html, body {
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  width: 100%;
-  max-width: 390px;
-  margin-top: 25px;
+  /* Grilla un 25% más grande que el diseño (758 → 950 px) para aprovechar el alto */
+  gap: calc(20 * var(--k));
+  width: calc(950 * var(--k));
+  margin-top: calc(112 * var(--k));
+  margin-bottom: auto;
   animation: fadeInUp 1s ease-out;
-  padding: 2px;
 }
 
-/* Estilos de cada tarjeta de menú */
+/* Estilos de cada tarjeta de menú.
+   Las imágenes traen las esquinas redondeadas (PNG transparente): la sombra va con drop-shadow */
 .menu-card {
   display: block;
   width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.06);
-  transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-              box-shadow 0.28s ease, 
-              filter 0.2s ease;
+  transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-decoration: none;
   background-color: transparent;
   transform: translateZ(0);
@@ -182,24 +202,25 @@ html, body {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 16px;
-  object-fit: cover;
-  transition: transform 0.35s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
+  transition: filter 0.28s ease;
 }
 
-.menu-card:hover {
+a.menu-card:hover {
   transform: translateY(-3px) scale(1.025);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
-  filter: brightness(1.02);
 }
 
-.menu-card:hover .menu-card-img {
-  transform: scale(1.02);
+a.menu-card:hover .menu-card-img {
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
 }
 
-.menu-card:active {
+a.menu-card:active {
   transform: translateY(0) scale(0.97);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Tarjetas "muy pronto": sin enlace ni efectos */
+.menu-card.is-soon {
+  cursor: default;
 }
 
 /* Animaciones Premium */
@@ -277,6 +298,12 @@ html, body {
   pointer-events: none;
 }
 
+/* Diapositivas a pantalla completa (sin barra estática arriba): sin recorte ni estiramiento */
+.story-slide--full img {
+  height: 100%;
+  margin-top: 0;
+}
+
 /* Zonas táctiles de navegación */
 .tap-zones {
   position: absolute;
@@ -307,12 +334,12 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 12px 16px 24px 16px;
+  padding: 16px 20px 30px 20px;
   background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
   z-index: 20;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   pointer-events: none;
 }
 
@@ -320,12 +347,12 @@ html, body {
 .progress-container {
   display: flex;
   width: 100%;
-  gap: 4px;
+  gap: 5px;
 }
 
 .progress-bar-bg {
   flex: 1;
-  height: 3px;
+  height: 4px;
   background-color: rgba(255, 255, 255, 0.35);
   border-radius: 999px;
   overflow: hidden;
@@ -351,12 +378,12 @@ html, body {
 .user-profile {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .profile-pic {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background-color: #fff;
   border: 1.5px solid #ffffff;
@@ -376,14 +403,17 @@ html, body {
 }
 
 .username {
-  font-size: 0.85rem;
+  font-family: 'OskariG2-SemiBold', sans-serif;
+  font-size: 1.1rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   color: #fff;
 }
 
 .time-ago {
-  font-size: 0.75rem;
+  font-family: 'OskariG2-Book', sans-serif;
+  font-size: 1rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
@@ -415,8 +445,10 @@ html, body {
 }
 
 .close-btn {
-  font-size: 1.5rem;
+  font-family: 'OskariG2-Book', sans-serif;
+  font-size: 2.1rem;
   font-weight: 300;
+  padding: 4px 8px;
 }
 
 /* Botones de flechas para escritorio */

@@ -6,47 +6,136 @@
   <title>VALCA - Conocé todos los usos de nuestros productos</title>
   <meta name="description" content="Descubre todos los usos y beneficios de los productos de cosmética natural VALCA. Cera regeneradora, ultra regeneradora, pocket y más.">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="intro.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
     <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body class="intro-active">
 
   <!-- Fondo difuminado para pantallas de escritorio -->
   <div class="desktop-bg-blur" style="background-image: url('images/Menu_inicio-Fondo.png');"></div>
 
   <!-- Contenedor principal estilo celular (Relación de aspecto 9:16) -->
   <div class="phone-wrapper">
+
+    <!-- Intro / precarga de marca (15 s). Tocar para saltear. -->
+    <div class="intro" id="intro" role="presentation">
+      <div class="intro-bg"></div>
+      <div class="intro-glow"></div>
+      <div class="intro-content">
+        <svg class="intro-logo" viewBox="100 150 1020 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VALCA" fill="#fff">
+          <g class="intro-dot" style="--col:0"><path d="M114.74,265v-32.04c9.02-42.67,48.43-72.28,91.19-68.71,43.84,3.66,76.23,39.62,77.02,82.28.82,44.46-32.66,81.4-76.35,85.36-43.24,3.91-81.36-25.13-91.86-66.89Z"/></g>
+          <g class="intro-dot" style="--col:1"><circle cx="346.04" cy="395.16" r="77.47"/></g>
+          <g class="intro-dot" style="--col:2"><circle cx="493.07" cy="248.04" r="70.79"/></g>
+          <g class="intro-dot" style="--col:2; --row:1"><circle cx="493.16" cy="542.6" r="64.06"/></g>
+          <g class="intro-dot" style="--col:3"><circle cx="640.25" cy="395.3" r="57.34"/></g>
+          <g class="intro-dot" style="--col:3; --row:1"><circle cx="640.19" cy="689.78" r="43.92"/></g>
+          <g class="intro-dot" style="--col:4"><circle cx="787.67" cy="248.32" r="50.63"/></g>
+          <g class="intro-dot" style="--col:4; --row:1"><circle cx="787.63" cy="542.78" r="37.26"/></g>
+          <g class="intro-dot" style="--col:5"><circle cx="934.75" cy="395.57" r="30.55"/></g>
+          <g class="intro-dot" style="--col:6"><circle cx="1081.52" cy="248.05" r="23.86"/></g>
+        </svg>
+
+        <p class="intro-text" aria-label="Laboratorio argentino especializado en el cuidado regenerativo de la piel.">
+          <span class="intro-line">Laboratorio argentino</span>
+          <span class="intro-line">especializado en el</span>
+          <span class="intro-line">cuidado regenerativo</span>
+          <span class="intro-line">de la piel.</span>
+        </p>
+      </div>
+      <div class="intro-wash"></div>
+    </div>
+    <script>
+      // La intro se muestra una vez por sesión (al volver desde un producto no se repite)
+      (function () {
+        var intro = document.getElementById('intro');
+        var seen = false;
+        try { seen = sessionStorage.getItem('valca-intro') === '1'; } catch (e) {}
+        var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function finish() {
+          document.body.classList.remove('intro-active');
+          if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+          try { sessionStorage.setItem('valca-intro', '1'); } catch (e) {}
+        }
+
+        if (seen || reduced) { finish(); return; }
+
+        // Efecto de tipeo: separa cada línea en letras con su propio retardo
+        var TYPE_START = 4600;  // ms: cuando empieza a tipearse
+        var CHAR_MS = 45;       // ms entre letras
+        var LINE_PAUSE = 180;   // ms extra al saltar de línea
+        var t = TYPE_START;
+        var lines = intro.querySelectorAll('.intro-line');
+        var lastChar = null;
+        Array.prototype.forEach.call(lines, function (line) {
+          var text = line.textContent;
+          line.textContent = '';
+          for (var i = 0; i < text.length; i++) {
+            var ch = document.createElement('span');
+            ch.className = 'intro-char';
+            ch.setAttribute('aria-hidden', 'true');
+            ch.textContent = text[i];
+            ch.style.setProperty('--d', t + 'ms');
+            ch.style.setProperty('--step', CHAR_MS + 'ms');
+            line.appendChild(ch);
+            lastChar = ch;
+            t += CHAR_MS;
+          }
+          t += LINE_PAUSE;
+        });
+        if (lastChar) lastChar.classList.add('is-last');
+
+        // Las animaciones del menú arrancan cuando el overlay empieza a desvanecerse
+        setTimeout(function () { document.body.classList.remove('intro-active'); }, 14000);
+        intro.addEventListener('animationend', function (e) {
+          if (e.animationName === 'intro-out') finish();
+        });
+        // Tocar para saltear
+        intro.addEventListener('click', function () {
+          document.body.classList.remove('intro-active');
+          intro.classList.add('is-skipping');
+        });
+      })();
+    </script>
+
     <div class="menu-container">
-      
+
       <!-- Contenedor del Logo de la marca -->
       <div class="logo-container">
-        <img src="images/VALCA-Negro.png" alt="VALCA Logo" class="brand-logo">
+        <img src="images/VALCA® Laboratorios • Negro.png" alt="Laboratorios VALCA" class="brand-logo">
       </div>
-      
-      <!-- Párrafo / Mensaje de marca -->
-      <p class="menu-subtitle">Conocé todos los usos de nuestros productos</p>
 
-      <!-- Cuadrícula de tarjetas de menú (Grid 2x3) -->
+      <!-- Párrafo / Mensaje de marca -->
+      <p class="menu-subtitle">Descubrí más usos</p>
+
+      <!-- Cuadrícula de tarjetas de menú (Grid 2x4) -->
       <div class="menu-grid">
         <a href="pages/ultra.html" class="menu-card" id="card-ultra" aria-label="VALCA Ultra Regeneradora">
-          <img src="images/Menu/01 ULTRA.png" alt="VALCA Ultra Regeneradora" class="menu-card-img">
+          <img src="images/Home/ultra.png" alt="VALCA Ultra Regeneradora" class="menu-card-img">
         </a>
         <a href="pages/regeneradora.html" class="menu-card" id="card-regeneradora" aria-label="VALCA Regeneradora">
-          <img src="images/Menu/02 REGE.png" alt="VALCA Regeneradora" class="menu-card-img">
+          <img src="images/Home/regeneradora.png" alt="VALCA Regeneradora" class="menu-card-img">
         </a>
         <a href="pages/pocket.html" class="menu-card" id="card-pocket" aria-label="VALCA Pocket">
-          <img src="images/Menu/03 POCKET.png" alt="VALCA Pocket" class="menu-card-img">
-        </a>
-        <a href="pages/estrias.html" class="menu-card" id="card-estrias" aria-label="VALCA Estrías">
-          <img src="images/Menu/04 ESTRIAS.png" alt="VALCA Estrías" class="menu-card-img">
+          <img src="images/Home/pocket.png" alt="VALCA Pocket" class="menu-card-img">
         </a>
         <a href="pages/intima.html" class="menu-card" id="card-intima" aria-label="VALCA Íntima">
-          <img src="images/Menu/05 INTIMA.png" alt="VALCA Íntima" class="menu-card-img">
+          <img src="images/Home/intima.png" alt="VALCA Íntima" class="menu-card-img">
+        </a>
+        <a href="pages/estrias.html" class="menu-card" id="card-estrias" aria-label="VALCA Estrías">
+          <img src="images/Home/estrias.png" alt="VALCA Estrías" class="menu-card-img">
         </a>
         <a href="pages/capilar.html" class="menu-card" id="card-capilar" aria-label="VALCA Capilar">
-          <img src="images/Menu/06 CAPILAR.png" alt="VALCA Capilar" class="menu-card-img">
+          <img src="images/Home/capilar.png" alt="VALCA Capilar" class="menu-card-img">
         </a>
+        <div class="menu-card is-soon" id="card-talones" role="img" aria-label="VALCA Talones, muy pronto">
+          <img src="images/Home/talones.png" alt="" class="menu-card-img">
+        </div>
+        <div class="menu-card is-soon" id="card-post-solar" role="img" aria-label="VALCA Post Solar, muy pronto">
+          <img src="images/Home/post-solar.png" alt="" class="menu-card-img">
+        </div>
       </div>
 
     </div>
