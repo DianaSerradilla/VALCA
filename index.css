@@ -304,6 +304,70 @@ a.menu-card:active {
   margin-top: 0;
 }
 
+/* Diapositiva armada con capas (fondo + ícono + título + texto + flecha).
+   Todo escala con el ancho de la diapositiva (cqw), sobre un diseño de 1080 px. */
+.story-slide--built {
+  container-type: size;
+}
+
+.story-slide--built img.slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.slide-icon,
+.slide-arrow {
+  position: absolute;
+  left: 50%;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.story-slide--built img.slide-icon,
+.story-slide--built img.slide-arrow {
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+}
+
+.story-slide--built img.slide-icon  { top: 21%; width: 20.6cqw; }
+.story-slide--built img.slide-arrow { top: 76.3%; width: 11.6cqw; }
+
+.slide-title,
+.slide-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.slide-title {
+  top: 43.8%;
+  font-family: 'OskariG2-SemiBold', 'OskariG2-Book', sans-serif;
+  font-weight: 600;
+  font-size: 12.4cqw;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.slide-text {
+  top: 51.9%;
+  left: 50%;
+  right: auto;
+  width: 60cqw;
+  transform: translateX(-50%);
+  font-family: 'OskariG2-Book', sans-serif;
+  font-weight: 400;
+  font-size: 5.7cqw;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
 /* Zonas táctiles de navegación */
 .tap-zones {
   position: absolute;

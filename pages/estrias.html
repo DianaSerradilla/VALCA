@@ -55,18 +55,13 @@
 
       <!-- Carril de las diapositivas de las historias -->
       <div class="story-track" id="story-track">
-        <!-- Prueba de altura: 3 diapositivas a pantalla completa (1080 × 1920) -->
         <!-- Diapositiva 1 -->
-        <div class="story-slide story-slide--full active" data-index="0" data-src="../images/Estrias/Estrias_Test_01.png">
-          <img src="../images/Estrias/Estrias_Test_01.png" alt="VALCA Estrías - Embarazo: aporta la elasticidad necesaria para prevenir marcas">
-        </div>
-        <!-- Diapositiva 2 -->
-        <div class="story-slide story-slide--full" data-index="1" data-src="../images/Estrias/Estrias_Test_02.png">
-          <img src="../images/Estrias/Estrias_Test_02.png" alt="VALCA Estrías - Pubertad: protege y prepara la piel joven durante las etapas de crecimiento rápido">
-        </div>
-        <!-- Diapositiva 3 -->
-        <div class="story-slide story-slide--full" data-index="2" data-src="../images/Estrias/Estrias_Test_03.png">
-          <img src="../images/Estrias/Estrias_Test_03.png" alt="VALCA Estrías - Cambios de peso: refuerza los tejidos frente a los estiramientos de la piel">
+        <div class="story-slide story-slide--full story-slide--built active" data-index="0" data-src="../images/Estrias/Embarazo/fondo.png">
+          <img class="slide-bg" src="../images/Estrias/Embarazo/fondo.png" alt="">
+          <img class="slide-icon" src="../images/Estrias/Embarazo/icono.png" alt="">
+          <h2 class="slide-title">Embarazo</h2>
+          <p class="slide-text">Aporta la elasticidad necesaria para prevenir marcas.</p>
+          <img class="slide-arrow" src="../images/Estrias/Embarazo/flecha.png" alt="">
         </div>
       </div>
 
@@ -76,6 +71,7 @@
   <script>
     // Configuración
     const STORY_DURATION = 5000; // 5 segundos por diapositiva de historia
+    const AUTOPLAY = false; // false = la historia queda en pausa (para probar); true = avanza sola
     const slides = document.querySelectorAll('.story-slide');
     const totalStories = slides.length;
     
@@ -130,6 +126,12 @@
     function tick(timestamp) {
       if (!startTime) {
         startTime = timestamp;
+      }
+
+      if (!AUTOPLAY) {
+        const fill = document.getElementById(`fill-${currentIndex}`);
+        if (fill) fill.style.width = '100%';
+        return;
       }
 
       if (!isPaused) {
