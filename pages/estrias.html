@@ -56,12 +56,32 @@
       <!-- Carril de las diapositivas de las historias -->
       <div class="story-track" id="story-track">
         <!-- Diapositiva 1 -->
-        <div class="story-slide story-slide--full story-slide--built active" data-index="0" data-src="../images/Estrias/Embarazo/fondo.png">
-          <img class="slide-bg" src="../images/Estrias/Embarazo/fondo.png" alt="">
-          <img class="slide-icon" src="../images/Estrias/Embarazo/icono.png" alt="">
-          <h2 class="slide-title">Embarazo</h2>
-          <p class="slide-text">Aporta la elasticidad necesaria para prevenir marcas.</p>
-          <img class="slide-arrow" src="../images/Estrias/Embarazo/flecha.png" alt="">
+        <div class="story-slide story-slide--full active" data-index="0" data-src="../images/Estrias/00.png">
+          <img src="../images/Estrias/00.png" alt="VALCA Estrías - 1 de 6">
+        </div>
+        <!-- Diapositiva 2 -->
+        <div class="story-slide story-slide--full" data-index="1" data-src="../images/Estrias/01.png">
+          <img src="../images/Estrias/01.png" alt="VALCA Estrías - 2 de 6">
+        </div>
+        <!-- Diapositiva 3 -->
+        <div class="story-slide story-slide--full" data-index="2" data-src="../images/Estrias/02.png">
+          <img src="../images/Estrias/02.png" alt="VALCA Estrías - 3 de 6">
+        </div>
+        <!-- Diapositiva 4 -->
+        <div class="story-slide story-slide--full" data-index="3" data-src="../images/Estrias/03.png">
+          <img src="../images/Estrias/03.png" alt="VALCA Estrías - 4 de 6">
+        </div>
+        <!-- Diapositiva 5 -->
+        <div class="story-slide story-slide--full" data-index="4" data-src="../images/Estrias/04.png">
+          <img src="../images/Estrias/04.png" alt="VALCA Estrías - 5 de 6">
+        </div>
+        <!-- Diapositiva 6 -->
+        <div class="story-slide story-slide--full" data-index="5" data-src="../images/Estrias/05-cta.png">
+          <img src="../images/Estrias/05-cta.png" alt="VALCA Estrías - 6 de 6">
+          <div class="story-slide-overlay">
+            <p class="story-coming-soon">Conseguí la tuya en</p>
+            <a href="https://valca.com.ar" target="_blank" class="story-cta-btn">valca.com.ar</a>
+          </div>
         </div>
       </div>
 
@@ -71,7 +91,7 @@
   <script>
     // Configuración
     const STORY_DURATION = 5000; // 5 segundos por diapositiva de historia
-    const AUTOPLAY = false; // false = la historia queda en pausa (para probar); true = avanza sola
+    const AUTOPLAY = true; // false = la historia queda en pausa (para probar); true = avanza sola
     const slides = document.querySelectorAll('.story-slide');
     const totalStories = slides.length;
     

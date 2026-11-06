@@ -130,67 +130,16 @@
         <a href="pages/capilar.html" class="menu-card" id="card-capilar" aria-label="VALCA Capilar">
           <img src="images/Home/capilar.png" alt="VALCA Capilar" class="menu-card-img">
         </a>
-        <div class="menu-card is-soon" id="card-talones" role="img" aria-label="VALCA Talones, muy pronto">
-          <img src="images/Home/talones.png" alt="" class="menu-card-img">
-        </div>
-        <div class="menu-card is-soon" id="card-post-solar" role="img" aria-label="VALCA Post Solar, muy pronto">
-          <img src="images/Home/post-solar.png" alt="" class="menu-card-img">
-        </div>
+        <a href="pages/talones.html" class="menu-card" id="card-talones" aria-label="VALCA Talones">
+          <img src="images/Home/talones.png" alt="VALCA Talones" class="menu-card-img">
+        </a>
+        <a href="pages/post-solar.html" class="menu-card" id="card-post-solar" aria-label="VALCA Post Solar">
+          <img src="images/Home/post-solar.png" alt="VALCA Post Solar" class="menu-card-img">
+        </a>
       </div>
 
     </div>
-
-    <!-- Notificación Toast premium y moderna -->
-    <div class="toast-container" id="toast">
-      <div class="toast-icon" id="toast-icon" style="background-color: var(--color-teal);"></div>
-      <span id="toast-text">Próximamente disponible</span>
-    </div>
   </div>
-
-  <script>
-    // Elementos del DOM
-    const toast = document.getElementById('toast');
-    const toastText = document.getElementById('toast-text');
-    const toastIcon = document.getElementById('toast-icon');
-    const buttons = document.querySelectorAll('button.menu-btn');
-    
-    let toastTimeout;
-
-    // Mapeo de colores de botones para el punto indicador del toast
-    const colors = {
-      'Ultra Regeneradora': 'var(--color-dark-teal)',
-      'Pocket': 'var(--color-green)',
-      'Estrías': 'var(--color-lavender)',
-      'Íntima': 'var(--color-pink)',
-      'Capilar': 'var(--color-orange)'
-    };
-
-    // Muestra el toast premium personalizado
-    function showToast(name) {
-      // Limpia el temporizador anterior si existe
-      clearTimeout(toastTimeout);
-      
-      // Actualiza los contenidos
-      toastText.textContent = `${name} próximamente disponible`;
-      toastIcon.style.backgroundColor = colors[name] || 'var(--color-teal)';
-      
-      // Transición de entrada
-      toast.classList.add('show');
-      
-      // Transición de salida
-      toastTimeout = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
-    }
-
-    // Asigna los eventos de clic
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const name = button.getAttribute('data-name');
-        showToast(name);
-      });
-    });
-  </script>
 
 </body>
 </html>
