@@ -196,22 +196,33 @@ html, body {
   text-decoration: none;
   background-color: transparent;
   transform: translateZ(0);
+  /* Las imágenes traen las esquinas en blanco y un filo claro a la derecha / abajo:
+     la tarjeta las recorta con un mismo radio y un tamaño fijo para que todas queden iguales. */
+  position: relative;
+  aspect-ratio: 371 / 237;
+  overflow: hidden;
+  border-radius: 2.7% / 4.2%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.14);
+  transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.28s ease;
 }
 
 .menu-card-img {
-  width: 100%;
-  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 102.5%;
+  height: 102.5%;
+  max-width: none;
+  object-fit: cover;
   display: block;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
-  transition: filter 0.28s ease;
 }
 
 a.menu-card:hover {
   transform: translateY(-3px) scale(1.025);
 }
 
-a.menu-card:hover .menu-card-img {
-  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
+a.menu-card:hover {
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
 }
 
 a.menu-card:active {
