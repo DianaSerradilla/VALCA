@@ -550,7 +550,7 @@ a.menu-card:active {
 }
 
 .story-coming-soon {
-  font-family: var(--font-family);
+  font-family: 'OskariG2-Book', sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   color: #ffffff;
@@ -567,7 +567,7 @@ a.menu-card:active {
   padding: 12px 32px;
   background-color: #ffffff;
   color: #1a1a1a;
-  font-family: var(--font-family);
+  font-family: 'OskariG2-SemiBold', 'OskariG2-Book', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   border-radius: 50px;
