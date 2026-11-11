@@ -92,7 +92,8 @@
 .intro-logo {
   position: absolute;
   left: 50%;
-  top: 35.7%;
+  /* Centrado entre el borde superior y el inicio del texto: (inicio del texto) / 2 - media altura del iso */
+  top: calc((49.2% - 3cqw) / 2 - 4.15cqw);
   width: 17.2cqw;
   height: auto;
   overflow: visible;
