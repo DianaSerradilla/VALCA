@@ -1,6 +1,3 @@
-/* Importación de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
 @font-face {
   font-family: 'OskariG2-Book';
   src: url('tipografia/OskariG2-Book.ttf') format('truetype');
@@ -16,18 +13,12 @@
 }
 
 :root {
-  --font-family: 'Montserrat', sans-serif;
+  --font-family: 'OskariG2-Book', sans-serif;
   
   /* Colores de marca */
   --color-teal: #0693a8;
-  --color-dark-teal: #1d5662;
-  --color-green: #9ab761;
-  --color-lavender: #b99ed4;
-  --color-pink: #e074bb;
-  --color-orange: #e57d20;
   
   --color-bg-desktop: #0f141c;
-  --color-card-border: rgba(255, 255, 255, 0.1);
   --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -229,11 +220,6 @@ a.menu-card:active {
   transform: translateY(0) scale(0.97);
 }
 
-/* Tarjetas "muy pronto": sin enlace ni efectos */
-.menu-card.is-soon {
-  cursor: default;
-}
-
 /* Animaciones Premium */
 @keyframes fadeInDown {
   from {
@@ -289,30 +275,11 @@ a.menu-card:active {
   pointer-events: none;
 }
 
-.story-slide.active {
-  opacity: 1;
-  visibility: visible;
-  z-index: 15;
-  pointer-events: none;
-}
-
-/* Recorte de la barra de progreso estática pre-renderizada:
-   Las imágenes de la 4 a la 9 ya vienen con una barra de progreso estática arriba.
-   Para ocultarla, recortamos el 5% superior de las imágenes, escalándolas
-   ligeramente para que sigan llenando el contenedor perfectamente.
-*/
 .story-slide img {
   width: 100%;
-  height: 105%; /* Hace la imagen más alta */
-  margin-top: -5%; /* Desplaza la imagen hacia arriba para recortar la barra estática superior */
+  height: 100%;
   object-fit: cover;
   pointer-events: none;
-}
-
-/* Diapositivas a pantalla completa (sin barra estática arriba): sin recorte ni estiramiento */
-.story-slide--full img {
-  height: 100%;
-  margin-top: 0;
 }
 
 /* Zonas táctiles de navegación */
